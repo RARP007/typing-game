@@ -43,15 +43,6 @@ COLOR_BLUE_BORDER = (20, 250, 250)
 COLOR_GREY_COMING_SOON = (200, 200, 200)
 
 # --- Data Petunjuk ---
-# PETUNJUK_MENU = {
-#     "1": {"p": "[!] Petunjuk:", "y": 15},
-#     "2": {"p": "Ketik salah satu", "y": 65},
-#     "3": {"p": "pilihan di menu", "y": 115},
-#     "4": {"p": "lalu tekan 'ENTER'", "y": 165},
-#     "5": {"p": "untuk memilih", "y": 215},
-#     "6": {"p": "mode permainan!", "y": 265}
-# }
-
 COMING_SOON = {
     "1": {"t": "Coming soon:", "y": 15},  # Typo 'Cooming' diperbaiki
     "2": {"t": "-Update visual", "y": 65},
@@ -158,7 +149,6 @@ class Game:
         self.KEY_MAP = KEY_MAP
         self.LEVEL_CHOICES = LEVEL_CHOICES
         self.COMING_SOON = COMING_SOON
-        #self.PETUNJUK_MENU = PETUNJUK_MENU # Ditambahkan untuk kelengkapan
 
     def reset_shared_ui_state(self):
         """Mereset variabel UI yang digunakan di semua state."""
@@ -533,6 +523,7 @@ class GameState(State):
         super().__init__(game)
         self.state_name = "game"
         
+        """Sebelumnya saya menggunakan variabel dengan nama random sebelum diganti oleh AI."""
         # Variabel 'atur', 'axas', 'kr', 'mulai', 'score', 'stack' lama
         # Sekarang menjadi instance variable milik state ini
         self.game_mode = game_mode
@@ -689,8 +680,8 @@ class ResultState(State):
                 is_best = True
                 self.game.BEST_SCORES["kalimat"]["p"] = score
             if score >= 30: tier_text, tier_color = "!Professional!", (255, 255, 0)
-            elif score >= 15: tier_text, tier_color = ">Advanced<", (255, 0, 255)
-            elif score >= 3: tier_text, tier_color = "+Intermediate+", (0, 200, 200)
+            elif score >= 20: tier_text, tier_color = ">Advanced<", (255, 0, 255)
+            elif score >= 10: tier_text, tier_color = "+Intermediate+", (0, 200, 200)
             else: tier_text, tier_color = "~Beginner~", (0, 175, 0)
 
         return tier_text, tier_color, is_best
@@ -745,3 +736,10 @@ class ResultState(State):
 if __name__ == "__main__":
     game_app = Game()
     game_app.run()
+
+"""
+    Saya harap dengan adanya projek ini maka saya akan lebih dekat dengan dunia programming.
+Bukan hanya programmer yang bisa salin tempel, tapi juga programmer yang bisa berpikir
+secara komputasional. Saya juga berharap supaya teman-teman sekelas saya (juga saya) dapat
+mengasah kemampuan mengetiknya, terutama di era yang serba digital ini.
+"""
